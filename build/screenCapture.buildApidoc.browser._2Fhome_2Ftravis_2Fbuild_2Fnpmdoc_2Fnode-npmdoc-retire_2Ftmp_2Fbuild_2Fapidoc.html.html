@@ -1,0 +1,977 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/RetireJS/retire.js#readme">retire (v1.2.12)</a>
+</h1>
+<h4>Retire is a tool for detecting use of vulnerable libraries</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.retire">module retire</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.check">
+            function <span class="apidocSignatureSpan">retire.</span>check
+            <span class="apidocSignatureSpan">(component, version, repo)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.isVulnerable">
+            function <span class="apidocSignatureSpan">retire.</span>isVulnerable
+            <span class="apidocSignatureSpan">(results)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.replaceVersion">
+            function <span class="apidocSignatureSpan">retire.</span>replaceVersion
+            <span class="apidocSignatureSpan">(jsRepoJsonAsText)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanFileContent">
+            function <span class="apidocSignatureSpan">retire.</span>scanFileContent
+            <span class="apidocSignatureSpan">(content, repo, hasher)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanFileName">
+            function <span class="apidocSignatureSpan">retire.</span>scanFileName
+            <span class="apidocSignatureSpan">(fileName, repo)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanNodeDependency">
+            function <span class="apidocSignatureSpan">retire.</span>scanNodeDependency
+            <span class="apidocSignatureSpan">(dependency, npmrepo)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanUri">
+            function <span class="apidocSignatureSpan">retire.</span>scanUri
+            <span class="apidocSignatureSpan">(uri, repo)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">retire.</span>repo</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">retire.</span>resolve</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">retire.</span>scanner</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">retire.</span>utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">retire.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.retire.repo">module retire.repo</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.repo.loadrepository">
+            function <span class="apidocSignatureSpan">retire.repo.</span>loadrepository
+            <span class="apidocSignatureSpan">(repoUrl, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.repo.loadrepositoryFromFile">
+            function <span class="apidocSignatureSpan">retire.repo.</span>loadrepositoryFromFile
+            <span class="apidocSignatureSpan">(filepath, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.retire.resolve">module retire.resolve</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.resolve.getNodeDependencies">
+            function <span class="apidocSignatureSpan">retire.resolve.</span>getNodeDependencies
+            <span class="apidocSignatureSpan">(path, limit)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.resolve.scanJsFiles">
+            function <span class="apidocSignatureSpan">retire.resolve.</span>scanJsFiles
+            <span class="apidocSignatureSpan">(path)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.retire.scanner">module retire.scanner</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanner.on">
+            function <span class="apidocSignatureSpan">retire.scanner.</span>on
+            <span class="apidocSignatureSpan">(name, listener)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanner.scanBowerFile">
+            function <span class="apidocSignatureSpan">retire.scanner.</span>scanBowerFile
+            <span class="apidocSignatureSpan">(file, repo, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanner.scanDependencies">
+            function <span class="apidocSignatureSpan">retire.scanner.</span>scanDependencies
+            <span class="apidocSignatureSpan">(dependencies, nodeRepo, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.scanner.scanJsFile">
+            function <span class="apidocSignatureSpan">retire.scanner.</span>scanJsFile
+            <span class="apidocSignatureSpan">(file, repo, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.retire.utils">module retire.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.detect">
+            function <span class="apidocSignatureSpan">retire.utils.</span>detect
+            <span class="apidocSignatureSpan">(ar, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.every">
+            function <span class="apidocSignatureSpan">retire.utils.</span>every
+            <span class="apidocSignatureSpan">(things, predicate)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.extend">
+            function <span class="apidocSignatureSpan">retire.utils.</span>extend
+            <span class="apidocSignatureSpan">(o, a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.find">
+            function <span class="apidocSignatureSpan">retire.utils.</span>find
+            <span class="apidocSignatureSpan">(ar, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.flatten">
+            function <span class="apidocSignatureSpan">retire.utils.</span>flatten
+            <span class="apidocSignatureSpan">(e)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.forwardEvent">
+            function <span class="apidocSignatureSpan">retire.utils.</span>forwardEvent
+            <span class="apidocSignatureSpan">(emitter, event)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.log">
+            function <span class="apidocSignatureSpan">retire.utils.</span>log
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.map">
+            function <span class="apidocSignatureSpan">retire.utils.</span>map
+            <span class="apidocSignatureSpan">(o, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.retire.utils.pick">
+            function <span class="apidocSignatureSpan">retire.utils.</span>pick
+            <span class="apidocSignatureSpan">(p, keys)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.retire" id="apidoc.module.retire">module retire</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.retire.check" id="apidoc.element.retire.check">
+        function <span class="apidocSignatureSpan">retire.</span>check
+        <span class="apidocSignatureSpan">(component, version, repo)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">check = function (component, version, repo) {
+	return check([{component: component, version: version}], repo);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function scanBowerFile(file, repo, options) {
+  if (options.ignore &amp;&amp; shouldIgnorePath([file], options.ignore)) {
+    return;
+  }
+  try {
+    var bower = JSON.parse(fs.readFileSync(file));
+    if (bower.version) {
+      var results = retire.<span class="apidocCodeKeywordSpan">check</span>(bower.name, bower.version, repo);
+      printResults(file, results, options);
+    }
+  } catch (e) {
+    log(options).warn('Could not parse file: ' + file);
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.isVulnerable" id="apidoc.element.retire.isVulnerable">
+        function <span class="apidocSignatureSpan">retire.</span>isVulnerable
+        <span class="apidocSignatureSpan">(results)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isVulnerable = function (results) {
+	for (var r in results) {
+		if (results[r].hasOwnProperty('vulnerabilities')) return true;
+	}
+	return false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  shasum.update(data);
+  return shasum.digest('hex');
+}
+};
+
+function printResults(file, results, options) {
+removeIgnored(results, options.ignore);
+if (!retire.<span class="apidocCodeKeywordSpan">isVulnerable</span>(results) &amp;&amp; !options.verbose) return;
+var logger = log(options).info;
+if (retire.isVulnerable(results)) {
+  logger = log(options).warn;
+  events.emit('vulnerable-dependency-found', {file: file, results: results});
+} else {
+  events.emit('dependency-found', {file: file, results: results});
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.replaceVersion" id="apidoc.element.retire.replaceVersion">
+        function <span class="apidocSignatureSpan">retire.</span>replaceVersion
+        <span class="apidocSignatureSpan">(jsRepoJsonAsText)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">replaceVersion = function (jsRepoJsonAsText) {
+	return jsRepoJsonAsText.replace(/Â§Â§versionÂ§Â§/g, '[0-9][0-9.a-z_\\\\-]+');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanFileContent" id="apidoc.element.retire.scanFileContent">
+        function <span class="apidocSignatureSpan">retire.</span>scanFileContent
+        <span class="apidocSignatureSpan">(content, repo, hasher)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanFileContent = function (content, repo, hasher) {
+	var result = scan(content, 'filecontent', repo);
+	if (result.length === 0) {
+		result = scan(content, 'filecontentreplace', repo, replacementMatch);
+	}
+	if (result.length === 0) {
+		result = scanhash(hasher.sha1(content), repo);
+	}
+	return check(result, repo);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function scanJsFile(file, repo, options) {
+if (options.ignore &amp;&amp; shouldIgnorePath([file], options.ignore)) {
+  return;
+}
+var results = retire.scanFileName(file, repo);
+if (!results || results.length === 0) {
+  results = retire.<span class="apidocCodeKeywordSpan">scanFileContent</span>(fs.readFileSync(file), repo, hash);
+}
+printResults(file, results, options);
+}
+
+function printParent(comp, options) {
+if ('parent' in comp) printParent(comp.parent, options);
+log(options).info(new Array(comp.level).join(' ') + (comp.parent ? String.fromCharCode(8627) + ' ' : '&amp;#
+x27;) + comp.component + ' ' + comp.version);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanFileName" id="apidoc.element.retire.scanFileName">
+        function <span class="apidocSignatureSpan">retire.</span>scanFileName
+        <span class="apidocSignatureSpan">(fileName, repo)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanFileName = function (fileName, repo) {
+	var result = scan(fileName, 'filename', repo);
+	return check(result, repo);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+
+function scanJsFile(file, repo, options) {
+  if (options.ignore &amp;&amp; shouldIgnorePath([file], options.ignore)) {
+    return;
+  }
+  var results = retire.<span class="apidocCodeKeywordSpan">scanFileName</span>(file, repo);
+  if (!results || results.length === 0) {
+    results = retire.scanFileContent(fs.readFileSync(file), repo, hash);
+  }
+  printResults(file, results, options);
+}
+
+function printParent(comp, options) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanNodeDependency" id="apidoc.element.retire.scanNodeDependency">
+        function <span class="apidocSignatureSpan">retire.</span>scanNodeDependency
+        <span class="apidocSignatureSpan">(dependency, npmrepo)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanNodeDependency = function (dependency, npmrepo) {
+	if (!isDefined(dependency.version)) {
+		console.warn('Missing version for ' + dependency.component + '. Need to run npm install ?');
+		return [];
+	}
+	if (!isDefined(npmrepo[dependency.component])) return [];
+	return check([dependency], npmrepo);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function scanDependencies(dependencies, nodeRepo, options) {
+for (var i in dependencies) {
+  if (options.ignore &amp;&amp; shouldIgnorePath([dependencies[i].component, toModulePath(dependencies[i])], options.ignore)) {
+    continue;
+  }
+  results = retire.<span class="apidocCodeKeywordSpan">scanNodeDependency</span>(dependencies[i], nodeRepo);
+  if (retire.isVulnerable(results)) {
+    events.emit('vulnerable-dependency-found', {results: results});
+    var result = results[0]; //Only single scan here
+    log(options).warn(result.component + ' ' + result.version + ' has known vulnerabilities: ' + printVulnerability
+(result, options));
+    if (result.parent) {
+      printParent(result, options);
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanUri" id="apidoc.element.retire.scanUri">
+        function <span class="apidocSignatureSpan">retire.</span>scanUri
+        <span class="apidocSignatureSpan">(uri, repo)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanUri = function (uri, repo) {
+	var result = scan(uri, 'uri', repo);
+	return check(result, repo);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.retire.repo" id="apidoc.module.retire.repo">module retire.repo</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.retire.repo.loadrepository" id="apidoc.element.retire.repo.loadrepository">
+        function <span class="apidocSignatureSpan">retire.repo.</span>loadrepository
+        <span class="apidocSignatureSpan">(repoUrl, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">loadrepository = function (repoUrl, options) {
+    options = utils.extend(options, { process : retire.replaceVersion });
+    if (options.nocache) {
+        return loadJson(repoUrl, options);
+    }
+    return loadFromCache(repoUrl, options.cachedir, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.repo.loadrepositoryFromFile" id="apidoc.element.retire.repo.loadrepositoryFromFile">
+        function <span class="apidocSignatureSpan">retire.repo.</span>loadrepositoryFromFile
+        <span class="apidocSignatureSpan">(filepath, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">loadrepositoryFromFile = function (filepath, options) {
+    options = utils.extend(options, { process : retire.replaceVersion });
+	return loadJsonFromFile(filepath, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.retire.resolve" id="apidoc.module.retire.resolve">module retire.resolve</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.retire.resolve.getNodeDependencies" id="apidoc.element.retire.resolve.getNodeDependencies">
+        function <span class="apidocSignatureSpan">retire.resolve.</span>getNodeDependencies
+        <span class="apidocSignatureSpan">(path, limit)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getNodeDependencies = function (path, limit) {
+	return getNodeDependencies(path, limit);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.resolve.scanJsFiles" id="apidoc.element.retire.resolve.scanJsFiles">
+        function <span class="apidocSignatureSpan">retire.resolve.</span>scanJsFiles
+        <span class="apidocSignatureSpan">(path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanJsFiles = function (path) {
+	return scanJsFiles(path);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.retire.scanner" id="apidoc.module.retire.scanner">module retire.scanner</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanner.on" id="apidoc.element.retire.scanner.on">
+        function <span class="apidocSignatureSpan">retire.scanner.</span>on
+        <span class="apidocSignatureSpan">(name, listener)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">on = function (name, listener) {
+	events.on(name, listener);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        } else {
+            if (fs.existsSync(path.resolve(cachedir, cache[url].date + '.json'))) {
+                fs.unlink(path.resolve(cachedir, cache[url].date + '.json'));
+            }
+        }
+    }
+    var events = new emitter();
+    loadJson(url, options).<span class="apidocCodeKeywordSpan">on</span>('done', function(data) {
+        cache[url] = { date : now, file : now + '.json' };
+        fs.writeFileSync(path.resolve(cachedir, cache[url].file), JSON.stringify(data), { encoding : 'utf8' });
+        fs.writeFileSync(cacheIndex, JSON.stringify(cache), { encoding : 'utf8' });
+        events.emit('done', data);
+    }).on('stop', forward(events, 'stop'));
+    return events;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanner.scanBowerFile" id="apidoc.element.retire.scanner.scanBowerFile">
+        function <span class="apidocSignatureSpan">retire.scanner.</span>scanBowerFile
+        <span class="apidocSignatureSpan">(file, repo, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanBowerFile = function (file, repo, options) {
+  return scanBowerFile(file, repo, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanner.scanDependencies" id="apidoc.element.retire.scanner.scanDependencies">
+        function <span class="apidocSignatureSpan">retire.scanner.</span>scanDependencies
+        <span class="apidocSignatureSpan">(dependencies, nodeRepo, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanDependencies = function (dependencies, nodeRepo, options) {
+	return scanDependencies(dependencies, nodeRepo, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.scanner.scanJsFile" id="apidoc.element.retire.scanner.scanJsFile">
+        function <span class="apidocSignatureSpan">retire.scanner.</span>scanJsFile
+        <span class="apidocSignatureSpan">(file, repo, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">scanJsFile = function (file, repo, options) {
+	return scanJsFile(file, repo, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.retire.utils" id="apidoc.module.retire.utils">module retire.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.detect" id="apidoc.element.retire.utils.detect">
+        function <span class="apidocSignatureSpan">retire.utils.</span>detect
+        <span class="apidocSignatureSpan">(ar, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">detect = function (ar, fn)Â&nbsp;{
+	for(var i in ar)Â&nbsp;{
+		if (fn(ar[i])) return ar[i];
+	}
+	return undefined;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+    string += vulnerability.info.join(options.outputformat === 'clean' ? '\n' : ' ');
+  });
+  return string;
+}
+
+function shouldIgnorePath(fileSpecs, ignores) {
+  return utils.<span class="apidocCodeKeywordSpan">detect</span>(ignores.paths, function(i) {
+    return utils.detect(fileSpecs, function(j) {
+      return j.indexOf(i) === 0 || j.indexOf(path.resolve(i)) === 0 ;
+    });
+  });
+}
+
+function removeIgnored(results, ignores) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.every" id="apidoc.element.retire.utils.every">
+        function <span class="apidocSignatureSpan">retire.utils.</span>every
+        <span class="apidocSignatureSpan">(things, predicate)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">every = function (things, predicate){
+	return Object.keys(things)
+		.map(function(k) { return predicate(k, things[k]) })
+		.reduce(function(x,y) { return x &amp;&amp; y }, true);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (r.vulnerabilities.length === 0) delete r.vulnerabilities;
+  });
+}
+
+function removeIgnoredVulnerabilitiesByIdentifier(identifiers, result) {
+  result.vulnerabilities = result.vulnerabilities.filter(function(v) {
+    if (!v.hasOwnProperty("identifiers")) return true;
+    return !utils.<span class="apidocCodeKeywordSpan">every</span>(identifiers, function(key, value) { return hasIdentifier(v, key
+, value); });
+  });
+}
+function hasIdentifier(vulnerability, key, value) {
+  if (!vulnerability.identifiers.hasOwnProperty(key)) return false;
+  var identifier = vulnerability.identifiers[key];
+  return Array.isArray(identifier) ? identifier.some(function(x) { return x === value; }) : identifier === value;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.extend" id="apidoc.element.retire.utils.extend">
+        function <span class="apidocSignatureSpan">retire.utils.</span>extend
+        <span class="apidocSignatureSpan">(o, a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">extend = function (o, a) {
+	var result = exports.pick(o, Object.keys(o));
+	exports.map(a, function(v,k){ result[k] = v; });
+	return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        fs.writeFileSync(cacheIndex, JSON.stringify(cache), { encoding : 'utf8' });
+        events.emit('done', data);
+    }).on('stop', forward(events, 'stop'));
+    return events;
+}
+
+exports.loadrepository = function(repoUrl, options) {
+    options = utils.<span class="apidocCodeKeywordSpan">extend</span>(options, { process : retire.replaceVersion });
+    if (options.nocache) {
+        return loadJson(repoUrl, options);
+    }
+    return loadFromCache(repoUrl, options.cachedir, options);
+};
+
+exports.loadrepositoryFromFile = function(filepath, options) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.find" id="apidoc.element.retire.utils.find">
+        function <span class="apidocSignatureSpan">retire.utils.</span>find
+        <span class="apidocSignatureSpan">(ar, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">find = function (ar, fn)Â&nbsp;{
+	for(var i in ar)Â&nbsp;{
+		if (fn(ar[i])) return ar[i];
+	}
+	return undefined;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+		listdep({component: pkginfo.name, version: pkginfo.version}, pkginfo, 1, deps);
+		events.emit('done', deps);				
+	});
+	return events;
+}
+
+function scanJsFiles(path) {
+	var finder = walkdir.<span class="apidocCodeKeywordSpan">find</span>(path);
+	finder.on('file', function (file) {
+		if (file.match(/\.js$/)) {
+			finder.emit('jsfile', file);
+		}
+		if (file.match(/\/bower.json$/)) {
+			finder.emit('bowerfile', file);
+		}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.flatten" id="apidoc.element.retire.utils.flatten">
+        function <span class="apidocSignatureSpan">retire.utils.</span>flatten
+        <span class="apidocSignatureSpan">(e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">flatten = function (e) {
+	return e.reduce(function(x,y) { return x.concat(y); }, []);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  component.vulnerabilities.forEach(function(vulnerability){
+    string += options.outputformat === 'clean' ? '\n   ' : ' ';
+    if (vulnerability.severity) {
+      string += 'severity: ' + vulnerability.severity + '; ';
+    }
+    if (vulnerability.identifiers) {
+      string += utils.map(vulnerability.identifiers, function(id, name) {
+        return name + ': ' + utils.<span class="apidocCodeKeywordSpan">flatten</span>([id]).join(' ');
+      }).join(', ') + '; ';
+    }
+    string += vulnerability.info.join(options.outputformat === 'clean' ? '\n' : ' ');
+  });
+  return string;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.forwardEvent" id="apidoc.element.retire.utils.forwardEvent">
+        function <span class="apidocSignatureSpan">retire.utils.</span>forwardEvent
+        <span class="apidocSignatureSpan">(emitter, event)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">forwardEvent = function (emitter, event) {
+	return function() {
+		emitter.emit([event].concat(arguments));
+	};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.log" id="apidoc.element.retire.utils.log">
+        function <span class="apidocSignatureSpan">retire.utils.</span>log
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">log = function (options) {
+	return {
+		info : info(options),
+		warn : warn(options),
+		verbose : options.verbose ? info(options) : function() {}
+	};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.map" id="apidoc.element.retire.utils.map">
+        function <span class="apidocSignatureSpan">retire.utils.</span>map
+        <span class="apidocSignatureSpan">(o, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">map = function (o, fn) {
+	return Object.keys(o).map(function(k) { return fn(o[k], k); });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var string = '';
+  component.vulnerabilities.forEach(function(vulnerability){
+    string += options.outputformat === 'clean' ? '\n   ' : ' ';
+    if (vulnerability.severity) {
+      string += 'severity: ' + vulnerability.severity + '; ';
+    }
+    if (vulnerability.identifiers) {
+      string += utils.<span class="apidocCodeKeywordSpan">map</span>(vulnerability.identifiers, function(id, name) {
+        return name + ': ' + utils.flatten([id]).join(' ');
+      }).join(', ') + '; ';
+    }
+    string += vulnerability.info.join(options.outputformat === 'clean' ? '\n' : ' ');
+  });
+  return string;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.retire.utils.pick" id="apidoc.element.retire.utils.pick">
+        function <span class="apidocSignatureSpan">retire.utils.</span>pick
+        <span class="apidocSignatureSpan">(p, keys)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pick = function (p, keys) {
+	var result = {};
+	keys.forEach(function(k) {
+		if (p.hasOwnProperty(k)) {
+			result[k] = p[k];
+		}
+	});
+	return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+			result[k] = p[k];
+		}
+	});
+	return result;
+};
+
+exports.extend = function(o, a) {
+	var result = exports.<span class="apidocCodeKeywordSpan">pick</span>(o, Object.keys(o));
+	exports.map(a, function(v,k){ result[k] = v; });
+	return result;
+};
+
+exports.map = function(o, fn) {
+	return Object.keys(o).map(function(k) { return fn(o[k], k); });
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
